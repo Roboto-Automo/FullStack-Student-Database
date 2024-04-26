@@ -6,33 +6,7 @@ import {Routes, Route} from "react-router-dom";
 export default function App() {
 
 let [students, setStudents] = useState([
-//   {
-//   name: "John Doe",
-//   age: 20,
-//   dateofbirth: "2000-01-01",
-//   email: "doedoe@gmail.com",   
-//   id: "1" 
-// },{
-//   name: "Jane Dee",
-//   age: 19,
-//   dateofbirth: "2000-02-01",
-//   email: "deedee@gmail.com",    
-//   id: "2"
-// },
-// {
-//   name: "Alan Bennett",
-//   age: 89,
-//   dateofbirth: "1935-05-09",
-//   email: "doedoe@gmail.com",   
-//   id: "3" 
-// },
-// {
-//   name: "bobby geezer",
-//   age: 20,
-//   dateofbirth: "2000-01-01",
-//   email: "doedoe@gmail.com",   
-//   id: "4" 
-// },
+
 ]);
 
 async function sendStudentToServer(student) {
