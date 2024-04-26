@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Student.css';
 
-export default function Student({ student, editStudent, deleteStudent }) {
+export default function Student({ student, editStudent, deleteStudent, admin }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedData, setEditedData] = useState({
     name: student.name,
@@ -63,8 +63,8 @@ export default function Student({ student, editStudent, deleteStudent }) {
           <p className='entry'>Age: {student.age}</p>
           <p className='entry'>Date of Birth: {student.dateofbirth}</p>
           <p className='entry'>Email: {student.email}</p>
-          <button onClick={() => setIsEditing(true)}>Edit</button>
-          <button onClick={() => deleteStudent(student.id)}>Delete</button>
+          { admin && <button onClick={() => setIsEditing(true)}>Edit</button>}
+          {admin && <button onClick={() => deleteStudent(student.id)}>Delete</button>}
         </>
       )}
     </div>

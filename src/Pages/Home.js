@@ -112,6 +112,9 @@ function editStudent(id, newName, newAge, newDob, newEmail) {
     return (
         <>
         <h1 className='title'>Student Dashboard</h1>
+        <button onClick={() => setAdmin(!admin)}>
+  {admin ? "Student View" : "Admin View"}
+</button>
         <div className='search'>
         <input className='search2'
         type='text'
@@ -120,7 +123,7 @@ function editStudent(id, newName, newAge, newDob, newEmail) {
         onChange={(e) => setSearchQuery(e.target.value)}
       />
       </div>
-        <form className='form' onSubmit={handleSubmit}>
+        {admin && <form className='form' onSubmit={handleSubmit}>
             <input type='text' placeholder='Name' value={name}
         onChange={(e) => setName(e.target.value)}/>
             <input type='number' placeholder='Age' 
@@ -133,11 +136,11 @@ function editStudent(id, newName, newAge, newDob, newEmail) {
         value={email} onChange={(e) => setEmail(e.target.value)}
             />
             <button type='submit' >Add Student</button>
-        </form>
+        </form>}
 
         {filteredStudents.map((student, index) => ( 
             <div key={index} className='student'>
-               <Student student={student} editStudent={editStudent} deleteStudent={deleteStudent} />
+               <Student student={student} editStudent={editStudent} deleteStudent={deleteStudent} admin={admin} />
             </div>
         ))}
        
