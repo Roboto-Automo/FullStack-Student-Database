@@ -1,12 +1,14 @@
 import React from 'react';
 import "./Dashboard.css";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Student from '../Components/Student';
+
 
 
 export default function Home(
     {students, createStudent, setStudents}
 ) {
+    
 
     const [name, setName] = useState('');
     const [age, setAge] = useState('');
@@ -14,6 +16,25 @@ export default function Home(
     const [email, setEmail] = useState('');
     const [searchQuery, setSearchQuery] = useState('');
 
+    useEffect(() => {
+        // Fetch data from the Express.js server when the component mounts
+        fetchData();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, []); // Empty dependency array means this effect runs once on mount
+    
+      const fetchData = async () => {
+        try {
+          const response = await fetch('/api/students');
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          const data = await response.json();
+          setStudents(data); // Update state with fetched data
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+      };
+    
     const handleSubmit = (event) => {
         event.preventDefault();
         
