@@ -1,25 +1,56 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
+import Home from './Pages/Home';
+import {Routes, Route} from "react-router-dom";
 
-function App() {
+export default function App() {
+
+let [students, setStudents] = useState([{
+  name: "John Doe",
+  age: 20,
+  dateofbirth: "2000-01-01",
+  email: "doedoe@gmail.com",   
+  id: "1" 
+},{
+  name: "Jane Dee",
+  age: 19,
+  dateofbirth: "2000-02-01",
+  email: "deedee@gmail.com",    
+  id: "2"
+},
+{
+  name: "Alan Bennett",
+  age: 89,
+  dateofbirth: "1935-05-09",
+  email: "doedoe@gmail.com",   
+  id: "3" 
+},
+{
+  name: "bobby geezer",
+  age: 20,
+  dateofbirth: "2000-01-01",
+  email: "doedoe@gmail.com",   
+  id: "4" 
+},]);
+
+function createStudent(name, age, dob, email) {
+
+  const randomId = Math.random().toString(36).substring(2, 9);
+  let student = {
+    name: name,
+    age: age,
+    dateofbirth: dob,
+    email: email,
+    id: randomId
+    
+  };
+  setStudents([...students, student]);
+}
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Routes>
+      <Route exact path="/" element={<Home students={students} setStudents={setStudents} createStudent={createStudent}/>} />
+      </Routes>
   );
 }
 
-export default App;
