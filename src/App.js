@@ -28,7 +28,7 @@ async function sendStudentToServer(student) {
 
 function createStudent(name, age, dob, email) {
 
-  const randomId = Math.random().toString(36).substring(2, 9);
+  const randomId = Math.floor(Math.random() * 1000000) + 1;
   let student = {
     name: name,
     age: age,

@@ -8,36 +8,6 @@ const PORT = 3001;
 // Middleware to parse JSON bodies
 app.use(json());
 
-// let students = [
-//     {
-//         name: "John Doe",
-//         age: 20,
-//         dateofbirth: "2000-01-01",
-//         email: "doedoe@gmail.com",   
-//         id: "1" 
-//       },{
-//         name: "Jane Dee",
-//         age: 19,
-//         dateofbirth: "2000-02-01",
-//         email: "deedee@gmail.com",    
-//         id: "2"
-//       },
-//       {
-//         name: "Alan Bennett",
-//         age: 89,
-//         dateofbirth: "1935-05-09",
-//         email: "doedoe@gmail.com",   
-//         id: "3" 
-//       },
-//       {
-//         name: "bobby geezer",
-//         age: 20,
-//         dateofbirth: "2000-01-01",
-//         email: "doedoe@gmail.com",   
-//         id: "4" 
-//       },
-// ];
-
 let students = []; 
 
 // Read initial data from students.json when the server starts
@@ -66,6 +36,18 @@ app.get('/api/students', (req, res) => {
   res.json(students);
 });
 
+//GET student by ID
+app.get('/api/students/:id', (req, res) => {
+  const studentId = parseInt(req.params.id); 
+  console.log('Requested student ID:', studentId);
+  const student = students.find(student => student.id === studentId);
+  if (student) {
+    res.json(student);
+  } else {
+    res.status(404).send('Student not found');
+  }
+});
+
 
 // POST a new student
 app.post('/api/students', async (req, res) => {
@@ -77,21 +59,39 @@ app.post('/api/students', async (req, res) => {
 });
 
 // PUT (update) a student by ID
-app.put('/api/students/:id', (req, res) => {
-  const studentId = parseInt(req.params.id);
-  const { name, age } = req.body;
-  const studentIndex = students.findIndex(student => student.id === studentId);
-  if (studentIndex === -1) {
-    return res.status(404).send('Student not found');
+app.put('/api/students/:id', async (req, res) => {
+  try {
+    const studentId = parseInt(req.params.id); 
+    const { name, age, dob, email} = req.body;
+
+    // Find the student by ID
+    const studentIndex = students.findIndex(student => student.id === studentId);
+    if (studentIndex === -1) {
+      return res.status(404).send('Student not found');
+    }
+
+    // Update the student's data
+    students[studentIndex] = {
+      ...students[studentIndex],
+      name,
+      age,
+      dob,
+      email,
+    };
+
+    await saveStudents(); // Save updated data to students.json
+    res.json(students[studentIndex]); // Send back the updated student data
+  } catch (error) {
+    console.error('Error updating student:', error);
+    res.status(500).send('Error updating student');
   }
-  students[studentIndex] = { ...students[studentIndex], name, age };
-  res.json(students[studentIndex]);
 });
 
 // DELETE a student by ID
-app.delete('/api/students/:id', (req, res) => {
+app.delete('/api/students/:id', async (req, res) => {
   const studentId = parseInt(req.params.id);
   students = students.filter(student => student.id !== studentId);
+  await saveStudents(); // Save updated data to students.json
   res.status(204).send(); // No content in response
 });
 

@@ -9,7 +9,7 @@ export default function Home(
     {students, createStudent, setStudents}
 ) {
     
-
+    const [admin, setAdmin] = useState(true);
     const [name, setName] = useState('');
     const [age, setAge] = useState('');
     const [dob, setDob] = useState('');
@@ -49,26 +49,59 @@ export default function Home(
         }
       };
 
-
-      function editStudent(id, newName, newAge, newDob, newEmail) {
-        const updatedStudents = students.map((student) => {
-          if (student.id === id) {
-            return {
-              ...student,
-              name: newName,
-              age: newAge,
-              dateofbirth: newDob,
-              email: newEmail,
-            };
-          }
-          return student;
-        });
-        setStudents(updatedStudents);
+//Edit student function with PUT request
+function editStudent(id, newName, newAge, newDob, newEmail) {
+  fetch(`/api/students/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ name: newName, age: newAge, dob: newDob, email: newEmail }),
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
       }
-      function deleteStudent(id) {
-        const newStudents = students.filter((student) => student.id !== id);
-        setStudents(newStudents);
-      } 
+      return response.json();
+    })
+    .then(updatedStudent => {
+      // Update the state with the updated student data
+      const updatedStudents = students.map(student => {
+        return student.id === id ? updatedStudent : student;
+      });
+      setStudents(updatedStudents);
+    })
+    .catch(error => {
+      console.error('Error updating student:', error);
+      // Handle error or show a notification
+    });
+}
+
+
+
+  // DELETE student by ID
+  const deleteStudent = async (id) => {
+    const confirmed = window.confirm('Are you sure you want to delete this student?');
+    if (!confirmed) {
+      return; // User canceled the deletion
+    }
+
+    try {
+      const response = await fetch(`/api/students/${id}`, {
+        method: 'DELETE',
+      });
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      // Update state after successful deletion
+      const updatedStudents = students.filter((student) => student.id !== id);
+      setStudents(updatedStudents);
+    } catch (error) {
+      console.error('Error deleting student:', error);
+      // Handle error or show a notification
+    }
+  };
 
       const sortedStudents = [...students].sort((a, b) => a.name.localeCompare(b.name));
 

@@ -1,30 +1,34 @@
 [
   {
     "name": "John Doe",
-    "age": 20,
+    "age": "21",
     "dateofbirth": "2000-01-01",
     "email": "doedoe@gmail.com",
-    "id": "1"
+    "id": 1,
+    "dob": "2000-01-01"
   },
   {
     "name": "Jane Dee",
-    "age": 19,
+    "age": "20",
     "dateofbirth": "2000-02-01",
     "email": "deedee@gmail.com",
-    "id": "2"
+    "id": 2,
+    "dob": "2000-02-01"
   },
   {
     "name": "Alan Bennett",
-    "age": 89,
+    "age": "89",
     "dateofbirth": "1935-05-09",
     "email": "doedoe@gmail.com",
-    "id": "3"
+    "id": 3,
+    "dob": "1935-05-09"
   },
   {
-    "name": "bobby geezer",
-    "age": 20,
+    "name": "Bobby Geezer",
+    "age": "21",
     "dateofbirth": "2000-01-01",
     "email": "doedoe@gmail.com",
-    "id": "4"
+    "id": 4,
+    "dob": "2000-01-01"
   }
 ]
