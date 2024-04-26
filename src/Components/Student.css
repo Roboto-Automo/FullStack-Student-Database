@@ -11,14 +11,15 @@ padding:10px;
 
 .entry {
     display : flex;
+    flex-wrap: wrap;
     flex-direction : column;
     justify-content : center;
     align-items : center;
-    margin:5px;
-    padding:10px;
-    border: 1px solid black;
-    border-radius: 5px;
-    min-width:200px;
+    margin:1vh;
+    padding:1vh;
+    font-size: small;
+    border-radius: 15px;
+    min-width:20vh;
     height: 50px;
-    background-color: #f0f0f0;
+    background-color: #b3e192;
 }
