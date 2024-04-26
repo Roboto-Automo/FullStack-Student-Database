@@ -1,4 +1,4 @@
-# Simple Front End Task - 
+# Simple Front End Task 
 
 Frontend Technical Task
 You need to create a user-friendly and intuitive student website interface that interacts with the backend API to perform CRUD operations on student records. The website should be designed to cater to administrators initially, with appropriate functionality and views for this role.
@@ -11,4 +11,13 @@ Administrator View:<br>
 	•	Clicking on a student's entry should display their details in an editable form for updating.<br>
 	•	Ensure that administrators have access to all fields when creating or editing student records.
 
+
+ # To Run
+
+ Clone repo <br>
+cd into /studentservices and run ```npm i``` <br>
+cd into /express and run ```npm i``` <br>
+in a terminal, cd into /express and run the command ```node app``` to run the express server<br>
+in a separate terminal, cd into /studentservices and run the command ```npm start``` <br>
+enjoy playing with the crud functionalities
 
