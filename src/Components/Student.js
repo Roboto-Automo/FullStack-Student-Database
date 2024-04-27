@@ -45,10 +45,11 @@ export default function Student({ student, editStudent, deleteStudent, admin }) 
   };
 
   return (
-    <div  onClick={handleBlockClick}>
+    <div style={{width:'100%'}} onClick={handleBlockClick}>
       {isEditing && admin ? (
         <>
         <h2 className='header' style={{display:'flex', justifyContent:'center'}}>Edit Student</h2>
+        <div style={{display:'flex', justifyContent:'center'}}>
           <input
           className='editbox'
             type='text'
@@ -73,6 +74,7 @@ export default function Student({ student, editStudent, deleteStudent, admin }) 
             value={editedData.email}
             onChange={(e) => setEditedData({ ...editedData, email: e.target.value })}
           />
+          </div>
           <div className='editbuttonscontainer'>
           <button className='button2' onClick={handleEditSubmit}>Submit</button>
          <button className='button2' onClick={() => deleteStudent(student.id)}>Delete</button>

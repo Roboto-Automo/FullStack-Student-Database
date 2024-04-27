@@ -17,6 +17,8 @@ html {
     padding: 15px; /* Removed quotes */
     border: none; /* Removed quotes */
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9); /* Removed quotes */
+    height:40px;
+    align-self: center;
   }
 
   .button1:hover {
@@ -27,13 +29,14 @@ html {
 
 
 .title {
-    font-size: 1.5em;
+    font-size: 1.8em;
     font-weight: bold;
     margin-bottom: 0.5em;
     color: black;
     display: flex;
     padding: 10px;
     margin-left: 10%;
+   
 }
 
 .form {
@@ -153,4 +156,21 @@ width: 80%;
       .student:nth-child(even):hover {
         background-color: rgb(116, 163, 122); /* Example hover background color */
         cursor: pointer; /* Change cursor to pointer on hover */
+      }
+
+      .scrollcontainer {
+       
+       max-height: calc(100vh - 200px); 
+  overflow-y: auto;
+      }
+
+
+      .fixedwrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        background-color: #c2ddc8;
+        background-color: rgb(164, 200, 169);
       }

@@ -112,10 +112,13 @@ function editStudent(id, newName, newAge, newDob, newEmail) {
       });
     return (
         <div className='main'>
+        <div className='fixedwrapper'>
+        <div style={{display:'flex', justifyContent:'space-between'}}>
         <h1 className='title'>Student Database</h1>
-        <button className='button1' style={{marginLeft:'11%'}} onClick={() => setAdmin(!admin)}>
-  Click for {admin ? "Student View" : "Admin View"}
+        <button className='button1' style={{marginRight:'11%'}} onClick={() => setAdmin(!admin)}>
+  {admin ? "Student View" : "Admin View"}
 </button>
+</div>
         <div className='search'>
         <input className='search2'
         type='text'
@@ -147,12 +150,14 @@ function editStudent(id, newName, newAge, newDob, newEmail) {
           <p className='head'>Email</p>
           </div>
         </div>
+        </div>
+        <div className='scrollcontainer' style={{ marginTop: admin ? '290px' : '210px' }}>
         {filteredStudents.map((student, index) => ( 
             <div key={index} className={`student ${index % 2 === 0 ? 'even' : 'odd'}`}>
                <Student student={student} editStudent={editStudent} deleteStudent={deleteStudent} admin={admin} />
             </div>
         ))}
-       
+        </div>
         </div>
     );
 }

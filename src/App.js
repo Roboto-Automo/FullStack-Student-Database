@@ -32,7 +32,7 @@ function createStudent(name, age, dob, email) {
   let student = {
     name: name,
     age: age,
-    dateofbirth: dob,
+    dob: dob,
     email: email,
     id: randomId
     
