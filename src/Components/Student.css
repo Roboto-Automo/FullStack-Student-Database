@@ -62,6 +62,7 @@ background-color: rgba(150, 217, 198, 0.532);
         border-radius: 20px; /* Removed quotes */
         padding: 10px; /* Removed quotes */
         border: none; /* Removed quotes */
+        width:100px;
         box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9); /* Removed quotes */
       }
     
@@ -79,4 +80,13 @@ background-color: rgba(150, 217, 198, 0.532);
         border-radius: 5px;
         width: 130px;
         background-color: #fffdfd;
+    }
+
+    .editbuttonscontainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+       margin-bottom: 20px;
+       margin-top: 20px;
     }

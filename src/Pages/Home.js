@@ -114,7 +114,7 @@ function editStudent(id, newName, newAge, newDob, newEmail) {
         <div className='main'>
         <h1 className='title'>Student Database</h1>
         <button className='button1' style={{marginLeft:'11%'}} onClick={() => setAdmin(!admin)}>
-  {admin ? "Student View" : "Admin View"}
+  Click for {admin ? "Student View" : "Admin View"}
 </button>
         <div className='search'>
         <input className='search2'
