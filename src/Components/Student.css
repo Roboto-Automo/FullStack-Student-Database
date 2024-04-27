@@ -70,6 +70,7 @@ background-color: rgba(150, 217, 198, 0.532);
         background-color: rgb(82, 116, 87);
         color: rgb(213, 211, 211);
         box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+        cursor: pointer;
       }
 
 

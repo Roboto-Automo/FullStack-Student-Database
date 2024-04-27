@@ -19,12 +19,14 @@ html {
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9); /* Removed quotes */
     height:40px;
     align-self: center;
+    
   }
 
   .button1:hover {
     background-color: rgb(82, 116, 87);
     color: rgb(213, 211, 211);
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+    cursor: pointer;
   }
 
 
@@ -148,13 +150,13 @@ width: 80%;
       }
 
       .student:nth-child(odd):hover {
-        background-color:rgb(116, 163, 122); /* Example hover background color */
+        background-color:rgb(116, 163, 122); 
         cursor: pointer; /* Change cursor to pointer on hover */
       }
       
       /* Hover effect for specific child elements in even numbered .student blocks */
       .student:nth-child(even):hover {
-        background-color: rgb(116, 163, 122); /* Example hover background color */
+        background-color: rgb(116, 163, 122); 
         cursor: pointer; /* Change cursor to pointer on hover */
       }
 
