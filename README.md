@@ -31,3 +31,7 @@ in a terminal, cd into /express and run the command ```node app``` to run the ex
 in a separate terminal, cd into /studentservices and run the command ```npm start``` <br>
 enjoy playing with the crud functionalities
 
+
+
+https://github.com/Roboto-Automo/frontendTask/assets/99829683/f4b8cc05-6ffe-4a22-88b0-79bd79220f74
+
