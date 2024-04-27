@@ -39,3 +39,44 @@ background-color: rgba(150, 217, 198, 0.532);
     /* background-color: rgba(150, 217, 198, 0.532); */
     
     }
+
+
+    .search3 {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin: 5px;
+        padding: 10px;
+        border: 1px solid rgb(198, 198, 198);
+        border-radius: 5px;
+        width: 130px;
+        background-color: #fffdfd;
+    }
+
+
+    .button2 {
+        background-color: rgb(116, 163, 122);
+        color: white;
+        font-weight: bold; /* Corrected property */
+        border-radius: 20px; /* Removed quotes */
+        padding: 10px; /* Removed quotes */
+        border: none; /* Removed quotes */
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9); /* Removed quotes */
+      }
+    
+      .button2:hover {
+        background-color: rgb(82, 116, 87);
+        color: rgb(213, 211, 211);
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+      }
+
+
+      .editbox {
+        margin: 5px;
+        padding: 10px;
+        border: 1px solid rgb(198, 198, 198);
+        border-radius: 5px;
+        width: 130px;
+        background-color: #fffdfd;
+    }

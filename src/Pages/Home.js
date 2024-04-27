@@ -112,7 +112,7 @@ function editStudent(id, newName, newAge, newDob, newEmail) {
     return (
         <div className='main'>
         <h1 className='title'>Student Database</h1>
-        <button style={{marginLeft:'11%',  backgroundColor: 'rgb(116, 163, 122)', color:'white', fontWeight:'bold', borderRadius:'20px', padding:'15px', border:'none' ,  boxShadow: '2px 2px 4px rgba(0, 0, 0, 0.9)',}} onClick={() => setAdmin(!admin)}>
+        <button className='button1' style={{marginLeft:'11%'}} onClick={() => setAdmin(!admin)}>
   {admin ? "Student View" : "Admin View"}
 </button>
         <div className='search'>
@@ -124,18 +124,18 @@ function editStudent(id, newName, newAge, newDob, newEmail) {
       />
       </div>
         {admin && <form className='form' onSubmit={handleSubmit}>
-            <input type='text' placeholder='Name' value={name}
+            <input className='search3' type='text' placeholder='Name' value={name}
         onChange={(e) => setName(e.target.value)}/>
-            <input type='number' placeholder='Age' 
+            <input className='search3' type='number' placeholder='Age' 
         value={age} onChange={(e) => setAge(e.target.value)}
             />
-            <input type='date' placeholder='Date of Birth' 
+            <input className='search3' type='date' placeholder='Date of Birth' 
         value={dob} onChange={(e) => setDob(e.target.value)}
             />
-            <input type='email' placeholder='Email' 
+            <input className='search3' type='email' placeholder='Email' 
         value={email} onChange={(e) => setEmail(e.target.value)}
             />
-            <button type='submit' >Add Student</button>
+            <button className='button1' type='submit' >Add Student</button>
         </form>}
         <div className='bodyCategories '>
         <div className='body3'>

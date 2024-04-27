@@ -20,42 +20,55 @@ export default function Student({ student, editStudent, deleteStudent, admin }) 
     });
   }, [student]);
 
-  const handleEditSubmit = () => {
+  const handleEditSubmit = (e) => {
     // Call editStudent with updated values
+    e.stopPropagation(); // Stop event propagation
     editStudent(student.id, editedData.name, editedData.age, editedData.dateofbirth, editedData.email);
     setIsEditing(false); // Exit edit mode after submission
   };
 
-  const handleEditCancel = () => {
+  const handleEditCancel = (e) => {
+    e.stopPropagation(); // Stop event propagation
     setIsEditing(false); // Exit edit mode without saving changes
   };
 
+  const handleBlockClick = () => {
+    if (admin) {
+      setIsEditing(true); // Enter edit mode when the block is clicked (only for admin)
+    }
+  };
+
   return (
-    <div>
+    <div className={`student-block ${isEditing ? 'editing' : ''}`} onClick={handleBlockClick}>
       {isEditing ? (
         <>
           <input
+          className='editbox'
             type='text'
             value={editedData.name}
             onChange={(e) => setEditedData({ ...editedData, name: e.target.value })}
           />
           <input
+            className='editbox'
             type='number'
             value={editedData.age}
             onChange={(e) => setEditedData({ ...editedData, age: e.target.value })}
           />
           <input
+            className='editbox'
             type='date'
             value={editedData.dateofbirth}
             onChange={(e) => setEditedData({ ...editedData, dateofbirth: e.target.value })}
           />
           <input
+            className='editbox'
             type='email'
             value={editedData.email}
             onChange={(e) => setEditedData({ ...editedData, email: e.target.value })}
           />
-          <button onClick={handleEditSubmit}>Submit</button>
-          <button onClick={handleEditCancel}>Cancel</button>
+          <button className='button2' onClick={handleEditSubmit}>Submit</button>
+         <button className='button2' onClick={() => deleteStudent(student.id)}>Delete</button>
+          <button className='button2' onClick={handleEditCancel}>Cancel</button>
         </>
       ) : (
         <>
@@ -65,8 +78,7 @@ export default function Student({ student, editStudent, deleteStudent, admin }) 
           <p className='entry'>{student.dateofbirth}</p>
           <p className='entry'>{student.email}</p>
           </div>
-          { admin && <button onClick={() => setIsEditing(true)}>Edit</button>}
-          {admin && <button onClick={() => deleteStudent(student.id)}>Delete</button>}
+         
         </>
       )}
     </div>
