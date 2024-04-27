@@ -110,9 +110,9 @@ function editStudent(id, newName, newAge, newDob, newEmail) {
         return student.name.toLowerCase().includes(searchQuery.toLowerCase());
       });
     return (
-        <>
-        <h1 className='title'>Student Dashboard</h1>
-        <button onClick={() => setAdmin(!admin)}>
+        <div className='main'>
+        <h1 className='title'>Student Database</h1>
+        <button style={{marginLeft:'11%',  backgroundColor: 'rgb(116, 163, 122)', color:'white', fontWeight:'bold', borderRadius:'20px', padding:'15px', border:'none' ,  boxShadow: '2px 2px 4px rgba(0, 0, 0, 0.9)',}} onClick={() => setAdmin(!admin)}>
   {admin ? "Student View" : "Admin View"}
 </button>
         <div className='search'>
@@ -137,14 +137,21 @@ function editStudent(id, newName, newAge, newDob, newEmail) {
             />
             <button type='submit' >Add Student</button>
         </form>}
-
+        <div className='bodyCategories '>
+        <div className='body3'>
+          <p className='head'>Name</p>
+          <p className='head'>Age</p>
+          <p className='head'>D.O.B</p>
+          <p className='head'>Email</p>
+          </div>
+        </div>
         {filteredStudents.map((student, index) => ( 
-            <div key={index} className='student'>
+            <div key={index} className={`student ${index % 2 === 0 ? 'even' : 'odd'}`}>
                <Student student={student} editStudent={editStudent} deleteStudent={deleteStudent} admin={admin} />
             </div>
         ))}
        
-        </>
+        </div>
     );
 }
 

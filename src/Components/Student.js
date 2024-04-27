@@ -31,7 +31,7 @@ export default function Student({ student, editStudent, deleteStudent, admin }) 
   };
 
   return (
-    <div className='body'>
+    <div>
       {isEditing ? (
         <>
           <input
@@ -59,10 +59,12 @@ export default function Student({ student, editStudent, deleteStudent, admin }) 
         </>
       ) : (
         <>
+        <div className='body2'>
           <p className='entry'>{student.name}</p>
           <p className='entry'>Age: {student.age}</p>
-          <p className='entry'>Date of Birth: {student.dateofbirth}</p>
-          <p className='entry'>Email: {student.email}</p>
+          <p className='entry'>{student.dateofbirth}</p>
+          <p className='entry'>{student.email}</p>
+          </div>
           { admin && <button onClick={() => setIsEditing(true)}>Edit</button>}
           {admin && <button onClick={() => deleteStudent(student.id)}>Delete</button>}
         </>
