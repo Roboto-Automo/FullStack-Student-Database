@@ -39,6 +39,7 @@ export default function Home(
         event.preventDefault();
         
         if (name && age && dob && email) {
+          console.log("created dob",dob);
           createStudent(name, age, dob, email);
           setName('');
     setAge('');
@@ -129,6 +130,7 @@ function editStudent(id, newName, newAge, newDob, newEmail) {
             <input className='search3' type='number' placeholder='Age' 
         value={age} onChange={(e) => setAge(e.target.value)}
             />
+
             <input className='search3' type='date' placeholder='Date of Birth' 
         value={dob} onChange={(e) => setDob(e.target.value)}
             />

@@ -39,9 +39,8 @@ html {
 .form {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
    padding:1.7vh;
-    width:100%;
+    margin-left:9.3% ;
 
 }
 

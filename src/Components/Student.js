@@ -6,7 +6,7 @@ export default function Student({ student, editStudent, deleteStudent, admin }) 
   const [editedData, setEditedData] = useState({
     name: student.name,
     age: student.age,
-    dateofbirth: student.dateofbirth,
+    dob: student.dob,
     email: student.email,
   });
 
@@ -15,7 +15,7 @@ export default function Student({ student, editStudent, deleteStudent, admin }) 
     setEditedData({
       name: student.name,
       age: student.age,
-      dateofbirth: student.dateofbirth,
+      dob: student.dob,
       email: student.email,
     });
   }, [student]);
@@ -23,13 +23,19 @@ export default function Student({ student, editStudent, deleteStudent, admin }) 
   const handleEditSubmit = (e) => {
     // Call editStudent with updated values
     e.stopPropagation(); // Stop event propagation
-    editStudent(student.id, editedData.name, editedData.age, editedData.dateofbirth, editedData.email);
+    console.log("editedData",editedData);
+    editStudent(student.id, editedData.name, editedData.age, editedData.dob, editedData.email);
     setIsEditing(false); // Exit edit mode after submission
   };
 
   const handleEditCancel = (e) => {
     e.stopPropagation(); // Stop event propagation
     setIsEditing(false); // Exit edit mode without saving changes
+  };
+
+  const handleDateChange = (e) => {
+    setEditedData({ ...editedData, dob: e.target.value });
+    console.log("object", editedData.dob);
   };
 
   const handleBlockClick = () => {
@@ -39,7 +45,7 @@ export default function Student({ student, editStudent, deleteStudent, admin }) 
   };
 
   return (
-    <div className={`student-block ${isEditing ? 'editing' : ''}`} onClick={handleBlockClick}>
+    <div  onClick={handleBlockClick}>
       {isEditing ? (
         <>
           <input
@@ -55,10 +61,10 @@ export default function Student({ student, editStudent, deleteStudent, admin }) 
             onChange={(e) => setEditedData({ ...editedData, age: e.target.value })}
           />
           <input
-            className='editbox'
+          className='editbox'
             type='date'
-            value={editedData.dateofbirth}
-            onChange={(e) => setEditedData({ ...editedData, dateofbirth: e.target.value })}
+            value={editedData.dob}
+            onChange={handleDateChange}
           />
           <input
             className='editbox'
@@ -75,7 +81,7 @@ export default function Student({ student, editStudent, deleteStudent, admin }) 
         <div className='body2'>
           <p className='entry'>{student.name}</p>
           <p className='entry'>Age: {student.age}</p>
-          <p className='entry'>{student.dateofbirth}</p>
+          <p className='entry'>{student.dob}</p>
           <p className='entry'>{student.email}</p>
           </div>
          
