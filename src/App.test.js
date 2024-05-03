@@ -19,7 +19,7 @@ test('Renders elements based on admin state', () => {
    const studentViewButton = screen.getByText('Student View');
    expect(studentViewButton).toBeInTheDocument();
  
-
+   
   // Check if the Add Student form is rendered initially
   const nameInput = screen.queryByPlaceholderText('Name');
   expect(nameInput).toBeInTheDocument();
@@ -79,7 +79,7 @@ test('Creates new entry on form submission', async () => {
   // Mock the fetch API to resolve with a success response
   fetch.mockResolvedValueOnce({
     ok: true,
-    json: async () => ({}), // Mock response data if needed
+    json: async () => ({}), // Return an empty object
   });
 
   const submitButton = screen.getByText('Add Student');
