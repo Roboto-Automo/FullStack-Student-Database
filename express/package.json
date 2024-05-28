@@ -1,11 +1,12 @@
 {
   "name": "express",
   "version": "1.0.0",
-  "main": "app.js",
+  "main": "express/xapp.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodeapp.js",
-    "dev": "nodemon app"
+    "start": "node express/xapp.js",
+    "dev": "nodemon express/xapp.js",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "keywords": [],
   "author": "",

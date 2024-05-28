@@ -3,7 +3,8 @@ const express = require('express');
 const { json } = require('express');
 const fs = require('fs').promises; 
 const app = express();
-const PORT = 3001;
+const path = require('path');
+const PORT = process.env.PORT || 3001;
 
 // Middleware to parse JSON bodies
 app.use(json());
@@ -13,7 +14,7 @@ let students = [];
 // Read initial data from students.json when the server starts
 async function loadStudents() {
   try {
-    const data = await fs.readFile('students.json');
+    const data = await fs.readFile(path.join(__dirname, 'students.json'));
     students = JSON.parse(data);
   } catch (error) {
     console.error('Error loading students:', error);
@@ -23,7 +24,7 @@ loadStudents();
 
 async function saveStudents() {
   try {
-    await fs.writeFile('students.json', JSON.stringify(students, null, 2));
+    await fs.writeFile(path.join(__dirname, 'students.json'), JSON.stringify(students, null, 2));
   } catch (error) {
     console.error('Error saving students:', error);
   }
@@ -94,6 +95,20 @@ app.delete('/api/students/:id', async (req, res) => {
   await saveStudents(); // Save updated data to students.json
   res.status(204).send(); // No content in response
 });
+
+
+//code inserted here below >>>
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, '../client/build')));
+
+// The "catchall" handler: for any request that doesn't
+// match one above, send back React's index.html file.
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+
+//code inserted here above >>>
 
 // Start the server
 app.listen(PORT, () => {
