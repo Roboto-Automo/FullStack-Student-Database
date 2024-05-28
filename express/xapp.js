@@ -100,8 +100,8 @@ app.delete('/api/students/:id', async (req, res) => {
 //code inserted here below >>>
 
 // Serve static files from the React app
-app.use(express.static(path.join(__dirname, '/public')));
-app.use(express.static(path.join(__dirname, '/src')));
+app.use(express.static(path.join(__dirname)));
+
 
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
