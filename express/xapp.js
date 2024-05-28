@@ -4,7 +4,7 @@ const { json } = require('express');
 const fs = require('fs').promises; 
 const app = express();
 const path = require('path');
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 5000;
 
 // Middleware to parse JSON bodies
 app.use(json());
@@ -98,16 +98,14 @@ app.delete('/api/students/:id', async (req, res) => {
 
 
 //code inserted here below >>>
+// Serve the static files from the React app
+app.use(express.static(path.join(__dirname, 'build')));
 
-// Serve static files from the React app
-app.use(express.static(path.join(__dirname)));
-
-
-// The "catchall" handler: for any request that doesn't
-// match one above, send back React's index.html file.
+// Handle other routes
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/index.html'));
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
+
 
 //code inserted here above >>>
 
