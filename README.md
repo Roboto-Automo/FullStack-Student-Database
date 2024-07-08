@@ -21,8 +21,12 @@ For the backend, you'll need to develop an API that handles the CRUD (Create, Re
 	•	Delete Student: Endpoint to delete a student record.<br>
 Each of these endpoints should be RESTful and accept appropriate HTTP methods (POST, GET, PUT/PATCH, DELETE) and respond with JSON data.<br>
 
+# Tech stack
+The app was built using React on the front end and Node.js and Express.js for the backend.  Deployment is via Heroku using a Dyno server to host the Express backend.
 
  # To Run
+
+ View the deployed app at: https://student-fullstack-database-80eca1a4984e.herokuapp.com
 
  Clone repo <br>
 cd into /studentservices and run ```npm i``` <br>
